@@ -26,7 +26,6 @@ import retrofit2.Response;
 public class MainFragment extends BrowseSupportFragment {
 
     private static final String TAG = "MainFragment";
-    List<Row> rowlist;
     private ArrayObjectAdapter mRowsAdapter;
     private  SimpleBackgroundManager simpleBackgroundManager = null;
     @Override
@@ -39,11 +38,11 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private void setupUIElements(){
-        setTitle("CVTE Data From JSon");
+        setTitle("Cloud TV");
         setHeadersState(HEADERS_ENABLED);
         setHeadersTransitionOnBackEnabled(true);
         // set fastLane (or headers) background color
-        setBrandColor(getResources().getColor(R.color.fastlane_background));
+       // setBrandColor(getResources().getColor(R.color.fastlane_background));
     }
 
     private void setupEventListeners() {
@@ -57,7 +56,7 @@ public class MainFragment extends BrowseSupportFragment {
             if (item instanceof String) { // GridItemPresenter row
                 simpleBackgroundManager.clearBackground();
             } else if (item instanceof RowItem) { // CardPresenter row
-                simpleBackgroundManager.updateBackground(getActivity().getDrawable(R.drawable.app_icon_your_company));
+                simpleBackgroundManager.updateBackground(getActivity().getDrawable(R.drawable.img));
             }
         }
     }
@@ -69,24 +68,25 @@ public class MainFragment extends BrowseSupportFragment {
             @Override
             public void onResponse(Call<Cvte> call, Response<Cvte> response) {
                 Cvte cvte = response.body();
+
+                List<Row> rowlist;
                 rowlist = cvte.getRows();
-
+                Log.d(TAG, "rowlist size"+rowlist.size());
                 for (int a = 0; a < rowlist.size(); a++) {
-
-                    CardPresenter cardPresenter = new CardPresenter();
-                    ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
-                    HeaderItem cardPresenterHeader = new HeaderItem(a, "HeaderItem"+a);
-
-
                     Row newrow = rowlist.get(a);
                     List<RowItem> newRowItem = newrow.getRowItems();
+
+                    HeaderItem cardPresenterHeader = new HeaderItem(newrow.getRowHeader());
+                    CardPresenter cardPresenter = new CardPresenter();
+                    ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
 
                     for (int i = 0; i <newRowItem.size(); i++) {
                         RowItem newRowi = newRowItem.get(i);
                         cardRowAdapter.add(newRowi);
-                    }
-                    mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
 
+                    }
+
+                    mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
                 }
                 setAdapter(mRowsAdapter);
             }

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -22,11 +23,11 @@ public class CardPresenter extends Presenter {
 
     private static final String TAG = "CardPresenter";
     private static Context mContext;
-    private static int CARD_WIDTH = 300;
-    private static int CARD_HEIGHT = 200;
+    private  int CARD_WIDTH  =600;
+    private  int CARD_HEIGHT  =200;
 
 
-    static class ViewHolder extends Presenter.ViewHolder {
+    public class ViewHolder extends Presenter.ViewHolder {
         private ImageCardView mCardView;
         private Drawable mDefaultCardImage;
         private PicassoImageCardViewTarget mImageCardViewTarget;
@@ -42,15 +43,27 @@ public class CardPresenter extends Presenter {
 
 
 
-        protected void updateCardViewImage(String uri) {
-            Picasso.get().load(uri).resize(Utils.convertDpToPixel(mContext, CARD_WIDTH),
-                            Utils.convertDpToPixel(mContext, CARD_HEIGHT))
-                    .placeholder(mDefaultCardImage)
-                    .error(mDefaultCardImage)
-                    .into(mImageCardViewTarget);
+        public void updateCardViewImage(String uri) {
+
+            if (uri.contains("http")) {
+                uri = uri.replace("http", "https");
+                Picasso.get().load(uri).resize(Utils.convertDpToPixel(mContext, CARD_WIDTH),
+                                Utils.convertDpToPixel(mContext, CARD_HEIGHT))
+                        .placeholder(mDefaultCardImage)
+                        .error(mDefaultCardImage)
+                        .into(mImageCardViewTarget);
+            }
+            else{
+                Picasso.get().load(uri).resize(Utils.convertDpToPixel(mContext, CARD_WIDTH),
+                                Utils.convertDpToPixel(mContext, CARD_HEIGHT))
+                        .placeholder(mDefaultCardImage)
+                        .error(mDefaultCardImage)
+                        .into(mImageCardViewTarget);
+            }
 
         }
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent) {
@@ -60,7 +73,7 @@ public class CardPresenter extends Presenter {
         ImageCardView cardView = new ImageCardView(mContext);
         cardView.setFocusable(true);
         cardView.setFocusableInTouchMode(true);
-        cardView.setBackgroundColor(mContext.getResources().getColor(R.color.fastlane_background));
+        //cardView.setBackgroundColor(mContext.getResources().getColor(R.color.fastlane_background));
         return new ViewHolder(cardView);
 
     }
@@ -68,13 +81,20 @@ public class CardPresenter extends Presenter {
     @Override
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
        RowItem data = (RowItem) item;
-        Log.d(TAG, "onBindViewHolder");
 
-        if (data.getPortrait() != null) {
+        if (data.getPoster() != null && data.getTileWidth()!=null && data.getTileHeight()!=null) {
+
+            CARD_WIDTH= Integer.parseInt(data.getTileWidth());
+            CARD_HEIGHT= Integer.parseInt(data.getTileHeight());
             ((ViewHolder) viewHolder).mCardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
             ((ViewHolder) viewHolder).updateCardViewImage(data.getPoster());
-            //((ViewHolder) viewHolder).mCardView.setMainImage(((ViewHolder) viewHolder).getDefaultCardImage());
+
         }
+        else {
+            ((ViewHolder) viewHolder).mCardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
+            ((ViewHolder) viewHolder).updateCardViewImage(data.getPoster());
+        }
+
     }
 
     @Override

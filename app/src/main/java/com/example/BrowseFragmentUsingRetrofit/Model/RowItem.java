@@ -61,7 +61,8 @@ public class RowItem {
     public  RowItem(){
 
     }
-    public RowItem(String title,String poster, String portrait) {
+
+    public RowItem(String title, String poster, String portrait,String tileWidth, String tileHeight) {
 //        this.tileType = tileType;
 //        this.tid = tid;
         this.title = title;
@@ -86,8 +87,8 @@ public class RowItem {
 //        this.cast = cast;
 //        this.synopsis = synopsis;
 //        this.showTileInfo = showTileInfo;
-//        this.tileWidth = tileWidth;
-//        this.tileHeight = tileHeight;
+        this.tileWidth = tileWidth;
+        this.tileHeight = tileHeight;
     }
 
 //    @SerializedName("source")
@@ -111,12 +112,12 @@ public class RowItem {
 //    @SerializedName("showTileInfo")
 //    @Expose
 //    private String showTileInfo;
-//    @SerializedName("tileWidth")
-//    @Expose
-//    private String tileWidth;
-//    @SerializedName("tileHeight")
-//    @Expose
-//    private String tileHeight;
+    @SerializedName("tileWidth")
+    @Expose
+    private String tileWidth;
+    @SerializedName("tileHeight")
+    @Expose
+    private String tileHeight;
 
 //    public String getTileType() {
 //        return tileType;
@@ -312,21 +313,21 @@ public class RowItem {
 //    public void setShowTileInfo(String showTileInfo) {
 //        this.showTileInfo = showTileInfo;
 //    }
-//
-//    public String getTileWidth() {
-//        return tileWidth;
-//    }
-//
-//    public void setTileWidth(String tileWidth) {
-//        this.tileWidth = tileWidth;
-//    }
-//
-//    public String getTileHeight() {
-//        return tileHeight;
-//    }
-//
-//    public void setTileHeight(String tileHeight) {
-//        this.tileHeight = tileHeight;
-//    }
+
+    public String getTileWidth() {
+        return tileWidth;
+    }
+
+    public void setTileWidth(String tileWidth) {
+        this.tileWidth = tileWidth;
+    }
+
+    public String getTileHeight() {
+        return tileHeight;
+    }
+
+    public void setTileHeight(String tileHeight) {
+        this.tileHeight = tileHeight;
+    }
 
 }
