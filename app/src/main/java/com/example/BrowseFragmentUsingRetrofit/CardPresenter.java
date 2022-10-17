@@ -25,6 +25,7 @@ public class CardPresenter extends Presenter {
     private static int CARD_WIDTH = 300;
     private static int CARD_HEIGHT = 200;
 
+
     static class ViewHolder extends Presenter.ViewHolder {
         private ImageCardView mCardView;
         private Drawable mDefaultCardImage;

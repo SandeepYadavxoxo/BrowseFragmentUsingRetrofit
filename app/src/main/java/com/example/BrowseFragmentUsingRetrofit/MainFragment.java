@@ -77,6 +77,7 @@ public class MainFragment extends BrowseSupportFragment {
                     ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
                     HeaderItem cardPresenterHeader = new HeaderItem(a, "HeaderItem"+a);
 
+
                     Row newrow = rowlist.get(a);
                     List<RowItem> newRowItem = newrow.getRowItems();
 
