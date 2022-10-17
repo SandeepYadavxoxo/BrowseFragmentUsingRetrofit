@@ -7,6 +7,9 @@ import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.HeaderItem;
 import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.ListRowPresenter;
+import androidx.leanback.widget.OnItemViewSelectedListener;
+import androidx.leanback.widget.Presenter;
+import androidx.leanback.widget.RowPresenter;
 
 import android.util.Log;
 
@@ -24,19 +27,15 @@ public class MainFragment extends BrowseSupportFragment {
 
     private static final String TAG = "MainFragment";
     List<Row> rowlist;
-    List<RowItem> rowItemList;
     private ArrayObjectAdapter mRowsAdapter;
-    private static final int GRID_ITEM_WIDTH = 600;
-    private static final int GRID_ITEM_HEIGHT = 200;
+    private  SimpleBackgroundManager simpleBackgroundManager = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        simpleBackgroundManager = new SimpleBackgroundManager(getActivity());
         setupUIElements();
-
-        Log.d(TAG, "2 ");
         loadRows();
-
-        Log.d(TAG, "2.1 ");
+        setupEventListeners();
     }
 
     private void setupUIElements(){
@@ -46,48 +45,56 @@ public class MainFragment extends BrowseSupportFragment {
         // set fastLane (or headers) background color
         setBrandColor(getResources().getColor(R.color.fastlane_background));
     }
-    private void loadRows() {
 
-        Log.d(TAG, "3 ");
+    private void setupEventListeners() {
+        setOnItemViewSelectedListener(new ItemViewSelectedListener());
+    }
+
+    private final class ItemViewSelectedListener implements OnItemViewSelectedListener {
+        @Override
+        public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item, RowPresenter.ViewHolder rowViewHolder, androidx.leanback.widget.Row row) {
+
+            if (item instanceof String) { // GridItemPresenter row
+                simpleBackgroundManager.clearBackground();
+            } else if (item instanceof RowItem) { // CardPresenter row
+                simpleBackgroundManager.updateBackground(getActivity().getDrawable(R.drawable.app_icon_your_company));
+            }
+        }
+    }
+    private void loadRows() {
+        mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         Call<Cvte> apiCall = RetrofitClient.getInstance().getApis().getphotos();
+
         apiCall.enqueue(new Callback<Cvte>() {
             @Override
             public void onResponse(Call<Cvte> call, Response<Cvte> response) {
                 Cvte cvte = response.body();
                 rowlist = cvte.getRows();
 
-                    Row newrow = rowlist.get(0);
-                    List<RowItem> newRowItem = newrow.getRowItems();
+                for (int a = 0; a < rowlist.size(); a++) {
 
-                    mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
-                    //FastLane1
-                    HeaderItem cardPresenterHeader = new HeaderItem(1, "FastLane1");
                     CardPresenter cardPresenter = new CardPresenter();
                     ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
+                    HeaderItem cardPresenterHeader = new HeaderItem(a, "HeaderItem"+a);
 
-                    for (int i = 0; i < newRowItem.size(); i++) {
+                    Row newrow = rowlist.get(a);
+                    List<RowItem> newRowItem = newrow.getRowItems();
+
+                    for (int i = 0; i <newRowItem.size(); i++) {
                         RowItem newRowi = newRowItem.get(i);
                         cardRowAdapter.add(newRowi);
                     }
                     mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
-                    setAdapter(mRowsAdapter);
+
+                }
+                setAdapter(mRowsAdapter);
             }
-
-
-
-
 
             @Override
             public void onFailure(Call<Cvte> call, Throwable t) {
                 Log.e(TAG, "onFailure: ", t);
             }
         });
-
-
-
     }
-
-
-
 
 }
