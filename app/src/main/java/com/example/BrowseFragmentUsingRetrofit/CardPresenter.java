@@ -1,15 +1,21 @@
 package com.example.BrowseFragmentUsingRetrofit;
 
+import static com.example.BrowseFragmentUsingRetrofit.R.drawable.*;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import androidx.annotation.RequiresApi;
+import androidx.leanback.widget.BaseCardView;
 import androidx.leanback.widget.ImageCardView;
 import androidx.leanback.widget.Presenter;
 
@@ -17,64 +23,71 @@ import com.example.BrowseFragmentUsingRetrofit.Model.RowItem;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-import java.util.List;
+import java.io.IOException;
 
 public class CardPresenter extends Presenter {
 
     private static final String TAG = "CardPresenter";
     private static Context mContext;
     private  int CARD_WIDTH  =600;
-    private  int CARD_HEIGHT  =200;
+    private  int CARD_HEIGHT  =338;
+
 
 
     public class ViewHolder extends Presenter.ViewHolder {
-        private ImageCardView mCardView;
+         ImageView mImageView;
         private Drawable mDefaultCardImage;
-        private PicassoImageCardViewTarget mImageCardViewTarget;
-        
+        private PicassoImageViewTarget mImageViewTarget;
+
         @SuppressLint("UseCompatLoadingForDrawables")
         public ViewHolder(View view) {
             super(view);
-            mCardView = (ImageCardView) view;
-            mImageCardViewTarget = new PicassoImageCardViewTarget(mCardView);
-            mDefaultCardImage = mContext.getResources().getDrawable(R.drawable.app_icon_your_company);
+            mImageView = view.findViewById(R.id.poster_image);
+            mImageViewTarget = new PicassoImageViewTarget(mImageView);
+            mDefaultCardImage = mContext.getResources().getDrawable(app_icon_your_company);
         }
+        public void updateViewImage(String uri) {
 
-
-
-
-        public void updateCardViewImage(String uri) {
-
-            if (uri.contains("http")) {
-                uri = uri.replace("http", "https");
-                Picasso.get().load(uri).resize(Utils.convertDpToPixel(mContext, CARD_WIDTH),
-                                Utils.convertDpToPixel(mContext, CARD_HEIGHT))
+            if (uri.contains("https")) {
+                Picasso.get().load(uri).resize(Utils.convertPixelToDp(mContext, CARD_WIDTH),
+                                Utils.convertPixelToDp(mContext, CARD_HEIGHT))
                         .placeholder(mDefaultCardImage)
                         .error(mDefaultCardImage)
-                        .into(mImageCardViewTarget);
+                        .into(mImageViewTarget);
             }
-            else{
-                Picasso.get().load(uri).resize(Utils.convertDpToPixel(mContext, CARD_WIDTH),
-                                Utils.convertDpToPixel(mContext, CARD_HEIGHT))
+            else if (uri.contains("http")) {
+                uri = uri.replace("http", "https");
+                Picasso.get().load(uri).resize(Utils.convertPixelToDp(mContext, CARD_WIDTH),
+                                Utils.convertPixelToDp(mContext, CARD_HEIGHT))
                         .placeholder(mDefaultCardImage)
                         .error(mDefaultCardImage)
-                        .into(mImageCardViewTarget);
+                        .into(mImageViewTarget);
+            }
+            else {
+                Picasso.get().load(uri).resize(Utils.convertPixelToDp(mContext, CARD_WIDTH),
+                                Utils.convertPixelToDp(mContext, CARD_HEIGHT))
+                        .placeholder(mDefaultCardImage)
+                        .error(mDefaultCardImage)
+                        .into(mImageViewTarget);
             }
 
         }
     }
 
-
+    @RequiresApi(api = Build.VERSION_CODES.P)
+    @SuppressLint("ResourceAsColor")
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent) {
         Log.d(TAG, "onCreateViewHolder");
         mContext = parent.getContext();
 
-        ImageCardView cardView = new ImageCardView(mContext);
-        cardView.setFocusable(true);
-        cardView.setFocusableInTouchMode(true);
-        //cardView.setBackgroundColor(mContext.getResources().getColor(R.color.fastlane_background));
-        return new ViewHolder(cardView);
+       // ImageView cardView;
+        View view = LayoutInflater.from(mContext).inflate(R.layout.fragment_main,parent,false);
+//        ImageCardView cardView = new ImageCardView(mContext);
+//        cardView.setFocusable(true);
+//        cardView.setInfoVisibility(BaseCardView.INVISIBLE);
+//        //cardView.setBackgroundColor(mContext.getResources().getColor(R.color.fastlane_background));
+        return new ViewHolder(view);
 
     }
 
@@ -82,17 +95,30 @@ public class CardPresenter extends Presenter {
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
        RowItem data = (RowItem) item;
 
-        if (data.getPoster() != null && data.getTileWidth()!=null && data.getTileHeight()!=null) {
-
-            CARD_WIDTH= Integer.parseInt(data.getTileWidth());
-            CARD_HEIGHT= Integer.parseInt(data.getTileHeight());
-            ((ViewHolder) viewHolder).mCardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
-            ((ViewHolder) viewHolder).updateCardViewImage(data.getPoster());
-
+        if (data.getLayoutType().equals("landscape") &&
+                data.getTileWidth() != null && data.getTileHeight() != null
+                && data.getPoster()!=null) {
+                CARD_WIDTH = Integer.parseInt(data.getTileWidth());
+                CARD_HEIGHT = Integer.parseInt(data.getTileHeight());
+            ((ViewHolder) viewHolder).mImageView.getLayoutParams().width=CARD_WIDTH;
+            ((ViewHolder) viewHolder).mImageView.getLayoutParams().height=CARD_HEIGHT;
+             ((ViewHolder) viewHolder).updateViewImage(data.getPoster());
         }
+        else if( (data.getLayoutType().equals("portrait") || data.getLayoutType().equals("square"))
+                && ((data.getTileWidth()!= null) && (data.getTileHeight()!= null ) && data.getPortrait()!=null)){
+
+                CARD_WIDTH = Integer.parseInt(data.getTileWidth());
+                CARD_HEIGHT = Integer.parseInt(data.getTileHeight());
+
+                 ((ViewHolder) viewHolder).mImageView.getLayoutParams().width=CARD_WIDTH;
+                ((ViewHolder) viewHolder).mImageView.getLayoutParams().height=CARD_HEIGHT;
+                ((ViewHolder) viewHolder).updateViewImage(data.getPortrait());
+        }
+
         else {
-            ((ViewHolder) viewHolder).mCardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
-            ((ViewHolder) viewHolder).updateCardViewImage(data.getPoster());
+            ((ViewHolder) viewHolder).mImageView.getLayoutParams().width=CARD_WIDTH;
+            ((ViewHolder) viewHolder).mImageView.getLayoutParams().height=CARD_HEIGHT;
+            ((ViewHolder) viewHolder).updateViewImage(data.getPoster());
         }
 
     }
@@ -106,26 +132,26 @@ public class CardPresenter extends Presenter {
         // TO DO
     }
 
-    public static class PicassoImageCardViewTarget implements Target {
-        private ImageCardView mImageCardView;
+    public static class PicassoImageViewTarget implements Target{
+        private ImageView mImageView;
 
-        public PicassoImageCardViewTarget(ImageCardView imageCardView) {
-            mImageCardView = imageCardView;
+        public PicassoImageViewTarget(ImageView imageView) {
+            mImageView = imageView;
         }
 
         @Override
         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom loadedFrom) {
             Drawable bitmapDrawable = new BitmapDrawable(mContext.getResources(), bitmap);
-            mImageCardView.setMainImage(bitmapDrawable);
+            mImageView.setImageDrawable(bitmapDrawable);
         }
 
         @Override
         public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-            mImageCardView.setMainImage(errorDrawable);
+            mImageView.setImageDrawable(errorDrawable);
+            e.printStackTrace();
         }
         @Override
         public void onPrepareLoad(Drawable drawable) {
-            // Do nothing, default_background manager has its own transitions
         }
     }
 

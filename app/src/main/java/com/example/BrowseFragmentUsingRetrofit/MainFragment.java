@@ -1,5 +1,6 @@
 package com.example.BrowseFragmentUsingRetrofit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.leanback.app.BrowseSupportFragment;
@@ -36,11 +37,9 @@ public class MainFragment extends BrowseSupportFragment {
         loadRows();
         setupEventListeners();
     }
-
     private void setupUIElements(){
         setTitle("Cloud TV");
         setHeadersState(HEADERS_ENABLED);
-        setHeadersTransitionOnBackEnabled(true);
         // set fastLane (or headers) background color
        // setBrandColor(getResources().getColor(R.color.fastlane_background));
     }
@@ -61,6 +60,7 @@ public class MainFragment extends BrowseSupportFragment {
         }
     }
     private void loadRows() {
+
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         Call<Cvte> apiCall = RetrofitClient.getInstance().getApis().getphotos();
 
@@ -82,6 +82,7 @@ public class MainFragment extends BrowseSupportFragment {
 
                     for (int i = 0; i <newRowItem.size(); i++) {
                         RowItem newRowi = newRowItem.get(i);
+                        newRowi.setLayoutType(newrow.getRowLayout());
                         cardRowAdapter.add(newRowi);
 
                     }

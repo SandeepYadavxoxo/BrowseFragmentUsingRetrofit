@@ -62,12 +62,13 @@ public class RowItem {
 
     }
 
-    public RowItem(String title, String poster, String portrait,String tileWidth, String tileHeight) {
+    public RowItem(String title, String poster, String portrait,String tileWidth, String tileHeight, String layoutType) {
 //        this.tileType = tileType;
 //        this.tid = tid;
         this.title = title;
         this.poster = poster;
         this.portrait = portrait;
+        this.layoutType = layoutType;
 //        this.background = background;
 //        this.rating = rating;
 //        this.runtime = runtime;
@@ -119,6 +120,16 @@ public class RowItem {
     @Expose
     private String tileHeight;
 
+
+    private  String layoutType;
+
+    public String getLayoutType() {
+        return layoutType;
+    }
+
+    public void setLayoutType(String layoutType) {
+        this.layoutType = layoutType;
+    }
 //    public String getTileType() {
 //        return tileType;
 //    }

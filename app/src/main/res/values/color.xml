@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="fastlane_background">#7C2BD8</color>
-    <color name="search_opaque">#ffaa3f</color>
-    <color name="default_background">#4DD57E</color>
+    <color name="onFocus">#0AF313</color>
+    <color name="NotFocus">#00000000</color>
 </resources>
