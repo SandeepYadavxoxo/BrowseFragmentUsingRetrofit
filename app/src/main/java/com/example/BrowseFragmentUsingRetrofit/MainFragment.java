@@ -1,6 +1,5 @@
 package com.example.BrowseFragmentUsingRetrofit;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.leanback.app.BrowseSupportFragment;
@@ -53,17 +52,6 @@ public class MainFragment extends BrowseSupportFragment {
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
     }
 
-    private final class ItemViewSelectedListener implements OnItemViewSelectedListener {
-        @Override
-        public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item, RowPresenter.ViewHolder rowViewHolder, androidx.leanback.widget.Row row) {
-
-            if (item instanceof String) { // GridItemPresenter row
-                simpleBackgroundManager.clearBackground();
-            } else if (item instanceof RowItem) { // CardPresenter row
-                simpleBackgroundManager.updateBackground(getActivity().getDrawable(R.drawable.img));
-            }
-        }
-    }
     private void loadRows() {
 
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
@@ -102,6 +90,18 @@ public class MainFragment extends BrowseSupportFragment {
                 Log.e(TAG, "onFailure: ", t);
             }
         });
+    }
+
+    private final class ItemViewSelectedListener implements OnItemViewSelectedListener {
+        @Override
+        public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item, RowPresenter.ViewHolder rowViewHolder, androidx.leanback.widget.Row row) {
+
+            if (item instanceof String) { // GridItemPresenter row
+                simpleBackgroundManager.clearBackground();
+            } else if (item instanceof RowItem) { // CardPresenter row
+                simpleBackgroundManager.updateBackground(getActivity().getDrawable(R.drawable.img));
+            }
+        }
     }
 
 }
