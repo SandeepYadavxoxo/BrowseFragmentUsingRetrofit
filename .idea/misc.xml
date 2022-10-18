@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/list_selector.xml" value="0.119" />
+        <entry key="app/src/main/res/drawable/selector.xml" value="0.1435" />
         <entry key="app/src/main/res/drawable/shape.xml" value="0.1055" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165625" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.12" />

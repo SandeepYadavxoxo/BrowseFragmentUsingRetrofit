@@ -39,9 +39,14 @@ public class MainFragment extends BrowseSupportFragment {
     }
     private void setupUIElements(){
         setTitle("Cloud TV");
+        setTitleView();
         setHeadersState(HEADERS_ENABLED);
         // set fastLane (or headers) background color
        // setBrandColor(getResources().getColor(R.color.fastlane_background));
+    }
+
+    private void setTitleView() {
+
     }
 
     private void setupEventListeners() {
