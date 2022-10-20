@@ -1,4 +1,7 @@
 <resources>
 
-    <style name="Theme.TvAppCvteDataFromAssets" parent="@style/Theme.Leanback" />
+    <style name="newTheme" parent="Theme.Leanback">
+        <item name="browseTitleViewLayout">@layout/titleview</item>
+        <item name="browseRowsMarginTop">60dp</item>
+    </style>
 </resources>

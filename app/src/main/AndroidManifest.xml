@@ -16,7 +16,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.TvAppCvteDataFromAssets">
+        android:theme="@style/newTheme"
+
+        >
         <activity
             android:name="com.example.BrowseFragmentUsingRetrofit.MainActivity"
             android:banner="@drawable/app_icon_your_company"

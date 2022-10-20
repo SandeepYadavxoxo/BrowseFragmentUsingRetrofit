@@ -4,10 +4,9 @@
       <root url="jar://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/transforms-3/85b20084765ca1c859f5f52b2408c278/transformed/gifdecoder-4.14.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/85b20084765ca1c859f5f52b2408c278/transformed/gifdecoder-4.14.0/res" />
-      <root url="file://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/transforms-3/85b20084765ca1c859f5f52b2408c278/transformed/gifdecoder-4.14.0/AndroidManifest.xml" />
       <root url="jar://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/transforms-3/85b20084765ca1c859f5f52b2408c278/transformed/gifdecoder-4.14.0/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/transforms-3/85b20084765ca1c859f5f52b2408c278/transformed/gifdecoder-4.14.0/res" />
+      <root url="file://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/transforms-3/85b20084765ca1c859f5f52b2408c278/transformed/gifdecoder-4.14.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/modules-2/files-2.1/com.github.bumptech.glide/gifdecoder/4.14.0/b7d947cff287268e774e1333533b121c7db6df3/gifdecoder-4.14.0-javadoc.jar!/" />

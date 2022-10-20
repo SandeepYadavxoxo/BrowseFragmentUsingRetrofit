@@ -80,13 +80,7 @@ public class CardPresenter extends Presenter {
     public ViewHolder onCreateViewHolder(ViewGroup parent) {
         Log.d(TAG, "onCreateViewHolder");
         mContext = parent.getContext();
-
-       // ImageView cardView;
         View view = LayoutInflater.from(mContext).inflate(R.layout.fragment_main,parent,false);
-//        ImageCardView cardView = new ImageCardView(mContext);
-//        cardView.setFocusable(true);
-//        cardView.setInfoVisibility(BaseCardView.INVISIBLE);
-//        //cardView.setBackgroundColor(mContext.getResources().getColor(R.color.fastlane_background));
         return new ViewHolder(view);
 
     }

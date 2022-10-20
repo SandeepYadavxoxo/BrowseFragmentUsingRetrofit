@@ -2,4 +2,7 @@
 <resources>
     <color name="onFocus">#0AF313</color>
     <color name="NotFocus">#00000000</color>
+    <color name="fastlane_background">#03ABF6</color>
+    <color name="search_opaque">#000000</color>
+    <color name="transparent">#00000000</color>
 </resources>

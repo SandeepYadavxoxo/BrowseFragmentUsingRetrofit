@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TvAppCvteDataFromAssets</string>
+    <string name="browse_title">Cloud TV</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.bumptech.glide:glide:4.14.0@aar">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/transforms-3/94e304988d6c5a7080db605169608885/transformed/glide-4.14.0/AndroidManifest.xml" />
       <root url="jar://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/transforms-3/94e304988d6c5a7080db605169608885/transformed/glide-4.14.0/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/transforms-3/94e304988d6c5a7080db605169608885/transformed/glide-4.14.0/res" />
+      <root url="file://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/transforms-3/94e304988d6c5a7080db605169608885/transformed/glide-4.14.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../ParseJSONRecyclerView-master/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/4.14.0/7032f75db8055bea4cac02c08c213d0db5691bf7/glide-4.14.0-javadoc.jar!/" />

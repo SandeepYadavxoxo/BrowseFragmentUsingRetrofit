@@ -1,5 +1,7 @@
 package com.example.BrowseFragmentUsingRetrofit;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.leanback.app.BrowseSupportFragment;
@@ -12,6 +14,9 @@ import androidx.leanback.widget.Presenter;
 import androidx.leanback.widget.RowPresenter;
 
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.BrowseFragmentUsingRetrofit.Model.Cvte;
 import com.example.BrowseFragmentUsingRetrofit.Model.Row;
@@ -28,6 +33,13 @@ public class MainFragment extends BrowseSupportFragment {
     private static final String TAG = "MainFragment";
     private ArrayObjectAdapter mRowsAdapter;
     private  SimpleBackgroundManager simpleBackgroundManager = null;
+    private CustomTitleView customTitleView;
+    private ImageView mWifiImage;
+    private ImageView mInputImage;
+    private ImageView mSettingImage;
+    private ImageView mMenuImage;
+    private ImageView mTitleView;
+    private ImageView mSerachView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,21 +47,22 @@ public class MainFragment extends BrowseSupportFragment {
         setupUIElements();
         loadRows();
         setupEventListeners();
+
     }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void setupUIElements(){
-        setTitle("Cloud TV");
-        setTitleView();
-        setHeadersState(HEADERS_ENABLED);
+
+        setHeadersState(HEADERS_DISABLED);
+        setHeadersTransitionOnBackEnabled(false);
         // set fastLane (or headers) background color
-       // setBrandColor(getResources().getColor(R.color.fastlane_background));
+      // setBrandColor(getResources().getColor(R.color.fastlane_background));
     }
 
-    private void setTitleView() {
-
-    }
 
     private void setupEventListeners() {
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
+
     }
 
     private void loadRows() {
@@ -77,9 +90,7 @@ public class MainFragment extends BrowseSupportFragment {
                         RowItem newRowi = newRowItem.get(i);
                         newRowi.setLayoutType(newrow.getRowLayout());
                         cardRowAdapter.add(newRowi);
-
                     }
-
                     mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
                 }
                 setAdapter(mRowsAdapter);
@@ -103,5 +114,4 @@ public class MainFragment extends BrowseSupportFragment {
             }
         }
     }
-
 }
