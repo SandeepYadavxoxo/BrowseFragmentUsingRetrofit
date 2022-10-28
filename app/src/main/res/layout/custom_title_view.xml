@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/_2sdp"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:focusable="true"
+        android:focusable="false"
         >
 
         <ImageView
@@ -22,7 +22,7 @@
             android:src="@drawable/ic_baseline_search_24"
             android:focusable="true"
             android:nextFocusRight="@id/wifi_badge"
-            android:nextFocusDown="@layout/fragment_main"
+            android:nextFocusLeft="@id/menu_badge"
             />
 
     <ImageView
@@ -32,10 +32,10 @@
         android:src="@drawable/ic_baseline_wifi_24"
         app:layout_constraintLeft_toRightOf="@id/search_badge"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="@dimen/_6sdp"
+        android:layout_marginLeft="@dimen/_8sdp"
         android:focusable="true"
         android:nextFocusRight="@id/input_badge"
-        android:nextFocusDown="@layout/fragment_main"
+        android:nextFocusLeft="@id/search_badge"
         />
     <ImageView
         android:id="@+id/input_badge"
@@ -47,7 +47,7 @@
         android:layout_marginLeft="@dimen/_16sdp"
         android:focusable="true"
         android:nextFocusRight="@id/setting_badge"
-        android:nextFocusDown="@layout/fragment_main"
+        android:nextFocusLeft="@id/wifi_badge"
         />
     <ImageView
         android:id="@+id/setting_badge"
@@ -58,11 +58,10 @@
         app:layout_constraintLeft_toRightOf="@id/input_badge"
         android:layout_marginLeft="@dimen/_16sdp"
         android:focusable="true"
+        android:nextFocusLeft="@id/input_badge"
         android:nextFocusRight="@id/menu_badge"
-        android:nextFocusDown="@layout/fragment_main"
-
-
         />
+
     <ImageView
         android:id="@+id/menu_badge"
         android:layout_width="@dimen/_20sdp"
@@ -72,10 +71,9 @@
         app:layout_constraintLeft_toRightOf="@id/setting_badge"
         android:layout_marginLeft="@dimen/_16sdp"
         android:focusable="true"
-        android:nextFocusRight="@id/search_badge"
-        android:nextFocusDown="@layout/fragment_main"
-
+        android:nextFocusLeft="@id/setting_badge"
         />
+
         <ImageView
             android:id="@+id/header_title"
             android:textAppearance="@android:style/TextAppearance.Large"

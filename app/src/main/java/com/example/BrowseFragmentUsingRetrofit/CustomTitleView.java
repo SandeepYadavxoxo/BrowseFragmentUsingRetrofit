@@ -5,8 +5,11 @@ import static com.example.BrowseFragmentUsingRetrofit.R.drawable.title_images_bo
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,13 +22,14 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.leanback.widget.TitleViewAdapter;
 
-public class CustomTitleView extends RelativeLayout implements TitleViewAdapter.Provider {
-    private ImageView mWifiImage;
-    private ImageView mInputImage;
-    private ImageView mSettingImage;
-    private ImageView mMenuImage;
-    private ImageView mTitleView;
-    private ImageView mSerachView;
+public class CustomTitleView extends ConstraintLayout implements TitleViewAdapter.Provider {
+
+    private final ImageView mWifiImage;
+    private final ImageView mInputImage;
+    private final ImageView mSettingImage;
+    private final ImageView mMenuImage;
+    private final ImageView mTitleView;
+    private final ImageView mSerachView;
     // private View mSearchOrbView;
 
 
@@ -44,7 +48,7 @@ public class CustomTitleView extends RelativeLayout implements TitleViewAdapter.
 
         @Override
         public void setBadgeDrawable(Drawable drawable) {
-            // CustomTitleView.this.setBadgeDrawable(drawable);
+            CustomTitleView.this.setBadgeDrawable(drawable);
         }
         @SuppressLint("ResourceAsColor")
         @Override
@@ -54,9 +58,6 @@ public class CustomTitleView extends RelativeLayout implements TitleViewAdapter.
 
         @Override
         public void updateComponentsVisibility(int flags) {
-//            int visibility = (flags & SEARCH_VIEW_VISIBLE) == SEARCH_VIEW_VISIBLE
-//                    ? View.VISIBLE : View.INVISIBLE;
-//            mSearchOrbView.setVisibility(visibility);
         }
 
         private void updateBadgeVisibility(boolean visible) {
@@ -89,14 +90,66 @@ public class CustomTitleView extends RelativeLayout implements TitleViewAdapter.
     public CustomTitleView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         View root = LayoutInflater.from(context).inflate(R.layout.custom_title_view, this);
-        mSerachView = root.findViewById(R.id.search_badge);
-        mSerachView.requestFocus();
-        mSerachView.setBackground((getResources().getDrawable(title_images_border)));
+
         mTitleView = root.findViewById(R.id.header_title);
-        mInputImage = root.findViewById(R.id.input_badge);
-        mMenuImage = root.findViewById(R.id.menu_badge);
-        mSettingImage = root.findViewById(R.id.setting_badge);
+
+        mSerachView = root.findViewById(R.id.search_badge);
+        mSerachView.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus) {
+                    mSerachView.setBackground((getResources().getDrawable(title_images_border)));
+                }
+
+            }
+        });
+
+
         mWifiImage = root.findViewById(R.id.wifi_badge);
+        mWifiImage.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus) {
+                    mWifiImage.setBackground((getResources().getDrawable(title_images_border)));
+                }
+
+            }
+        });
+
+        mInputImage = root.findViewById(R.id.input_badge);
+        mInputImage.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus) {
+                    mInputImage.setBackground((getResources().getDrawable(title_images_border)));
+                }
+
+            }
+        });
+
+        mSettingImage = root.findViewById(R.id.setting_badge);
+        mSettingImage.setOnFocusChangeListener(new OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus) {
+                    mSettingImage.setBackground((getResources().getDrawable(title_images_border)));
+                }
+            }
+        });
+
+        mMenuImage = root.findViewById(R.id.menu_badge);
+        mMenuImage.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus) {
+                    mMenuImage.setBackground((getResources().getDrawable(title_images_border)));
+                }
+            }
+        });
+
+
+
+
 
     }
 

@@ -2,6 +2,6 @@
 
     <style name="newTheme" parent="Theme.Leanback">
         <item name="browseTitleViewLayout">@layout/titleview</item>
-        <item name="browseRowsMarginTop">60dp</item>
+        <item name="browseRowsMarginTop">@dimen/_50sdp</item>
     </style>
 </resources>

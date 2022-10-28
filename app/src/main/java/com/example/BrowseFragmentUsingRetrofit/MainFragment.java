@@ -33,13 +33,6 @@ public class MainFragment extends BrowseSupportFragment {
     private static final String TAG = "MainFragment";
     private ArrayObjectAdapter mRowsAdapter;
     private  SimpleBackgroundManager simpleBackgroundManager = null;
-    private CustomTitleView customTitleView;
-    private ImageView mWifiImage;
-    private ImageView mInputImage;
-    private ImageView mSettingImage;
-    private ImageView mMenuImage;
-    private ImageView mTitleView;
-    private ImageView mSerachView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,4 +107,5 @@ public class MainFragment extends BrowseSupportFragment {
             }
         }
     }
+
 }
