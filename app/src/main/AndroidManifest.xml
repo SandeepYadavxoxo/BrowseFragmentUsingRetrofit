@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.BrowseFragmentUsingRetrofit">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -18,7 +19,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/newTheme"
 
-        >
+        tools:targetApi="m">
         <activity
             android:name="com.example.BrowseFragmentUsingRetrofit.MainActivity"
             android:banner="@drawable/app_icon_your_company"

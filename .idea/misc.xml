@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.12" />
+        <entry key="../../.gradle/caches/transforms-3/84432894d6c76e133756d14432cbfcc2/transformed/leanback-1.0.0/res/drawable/lb_search_orb.xml" value="0.1385" />
         <entry key="../ParseJSONRecyclerView-master/caches/transforms-3/84432894d6c76e133756d14432cbfcc2/transformed/leanback-1.0.0/res/layout/lb_title_view.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_input_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1" />
@@ -14,7 +15,7 @@
         <entry key="app/src/main/res/drawable/shape.xml" value="0.1055" />
         <entry key="app/src/main/res/drawable/title_images_border.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165625" />
-        <entry key="app/src/main/res/layout/custom_title_view.xml" value="0.16285714285714287" />
+        <entry key="app/src/main/res/layout/custom_title_view.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.12" />
         <entry key="app/src/main/res/layout/titleview.xml" value="0.18" />
       </map>

@@ -14,7 +14,7 @@
         >
 
         <ImageView
-            android:id="@+id/search_badge"
+            android:id="@+id/search_orb"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_16sdp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -30,7 +30,7 @@
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_16sdp"
         android:src="@drawable/ic_baseline_wifi_24"
-        app:layout_constraintLeft_toRightOf="@id/search_badge"
+        app:layout_constraintLeft_toRightOf="@id/search_orb"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="@dimen/_8sdp"
         android:focusable="true"
@@ -70,8 +70,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/setting_badge"
         android:layout_marginLeft="@dimen/_16sdp"
-        android:focusable="true"
         android:nextFocusLeft="@id/setting_badge"
+        android:nextFocusRight="@id/search_badge"
+        android:focusable="true"
         />
 
         <ImageView

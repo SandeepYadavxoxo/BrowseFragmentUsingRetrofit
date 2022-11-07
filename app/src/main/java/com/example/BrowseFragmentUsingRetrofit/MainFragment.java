@@ -1,7 +1,10 @@
 package com.example.BrowseFragmentUsingRetrofit;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.leanback.app.BrowseSupportFragment;
@@ -9,10 +12,12 @@ import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.HeaderItem;
 import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.ListRowPresenter;
+import androidx.leanback.widget.OnItemViewClickedListener;
 import androidx.leanback.widget.OnItemViewSelectedListener;
 import androidx.leanback.widget.Presenter;
 import androidx.leanback.widget.RowPresenter;
 
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,9 +45,12 @@ public class MainFragment extends BrowseSupportFragment {
         setupUIElements();
         loadRows();
         setupEventListeners();
+        CustomTitleView customTitleView = new CustomTitleView(getActivity());
+        setTitleView(customTitleView);
+      //  customTitleView.onClickMethods();
+
 
     }
-
     @SuppressLint("UseCompatLoadingForDrawables")
     private void setupUIElements(){
 
@@ -55,8 +63,9 @@ public class MainFragment extends BrowseSupportFragment {
 
     private void setupEventListeners() {
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
-
     }
+
+
 
     private void loadRows() {
 
@@ -71,8 +80,10 @@ public class MainFragment extends BrowseSupportFragment {
                 List<Row> rowlist;
                 rowlist = cvte.getRows();
                 Log.d(TAG, "rowlist size"+rowlist.size());
+
                 for (int a = 0; a < rowlist.size(); a++) {
                     Row newrow = rowlist.get(a);
+
                     List<RowItem> newRowItem = newrow.getRowItems();
 
                     HeaderItem cardPresenterHeader = new HeaderItem(newrow.getRowHeader());
@@ -108,4 +119,10 @@ public class MainFragment extends BrowseSupportFragment {
         }
     }
 
+    private static class ItemViewClickedListener implements OnItemViewClickedListener {
+        @Override
+        public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item, RowPresenter.ViewHolder rowViewHolder, androidx.leanback.widget.Row row) {
+
+        }
+    }
 }

@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_scrollEffect="compress"
-    android:background="@drawable/selector"
     android:focusable="true"
+    android:background="@drawable/selector"
     android:padding="@dimen/_1sdp"
     tools:context=".MainFragment"
     >
