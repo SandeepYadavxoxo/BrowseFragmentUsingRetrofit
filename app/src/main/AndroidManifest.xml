@@ -32,8 +32,14 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <data
+                    android:scheme="https"/>
+                <data
+                    android:scheme="http"/>
             </intent-filter>
         </activity>
+        <meta-data android:name="com.example.leanback_newlauncher.MyAppGlideModule"
+            android:value="AppGlideModule"/>
     </application>
 
 </manifest>

@@ -33,36 +33,42 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
     private final ImageView mInputImage;
     private final ImageView mSettingImage;
     private final ImageView mMenuImage;
-    private final ImageView mTitleView;
-    private final ImageView mSerachView;
+    private final View mSearchOrbView;
 
     private final TitleViewAdapter mTitleViewAdapter = new TitleViewAdapter() {
-
-
         @Override
         public View getSearchAffordanceView() {
-            return null;
-        }
 
+            return mSearchOrbView;
+        }
 
         @Override
         public void setTitle(CharSequence titleText) {
             CustomTitleView.this.setTitle(titleText);
         }
 
-
         @Override
         public void setBadgeDrawable(Drawable drawable) {
-            CustomTitleView.this.setBadgeDrawable(drawable);
+            //CustomTitleView.this.setBadgeDrawable(drawable);
         }
-        @SuppressLint("ResourceAsColor")
+
         @Override
         public void setOnSearchClickedListener(OnClickListener listener) {
-            // mSearchOrbView.setOnClickListener(listener);
+            mSearchOrbView.setOnClickListener(listener);
         }
 
         @Override
         public void updateComponentsVisibility(int flags) {
+            /*if ((flags & BRANDING_VIEW_VISIBLE) == BRANDING_VIEW_VISIBLE) {
+                updateBadgeVisibility(true);
+            } else {
+                mAnalogClockView.setVisibility(View.GONE);
+                mTitleView.setVisibility(View.GONE);
+            }*/
+
+//            int visibility = (flags & SEARCH_VIEW_VISIBLE) == SEARCH_VIEW_VISIBLE
+//                    ? View.VISIBLE : View.INVISIBLE;
+//            mSearchOrbView.setVisibility(visibility);
         }
 
         private void updateBadgeVisibility(boolean visible) {
@@ -71,14 +77,12 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
                 mMenuImage.setVisibility(View.VISIBLE);
                 mWifiImage.setVisibility(View.VISIBLE);
                 mSettingImage.setVisibility(View.VISIBLE);
-               mSerachView.setVisibility(View.VISIBLE);
 
             } else {
                 mInputImage.setVisibility(View.GONE);
                 mMenuImage.setVisibility(View.GONE);
                 mWifiImage.setVisibility(View.GONE);
                 mSettingImage.setVisibility(View.GONE);
-               mSerachView.setVisibility(View.GONE);
             }
         }
     };
@@ -91,24 +95,10 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
         this(context, attrs, 0);
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
     public CustomTitleView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        View root = LayoutInflater.from(context).inflate(R.layout.custom_title_view, this);
-
-        mTitleView = root.findViewById(R.id.header_title);
-
-        mSerachView = root.findViewById(R.id.search_orb);
-        mSerachView.setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if(hasFocus) {
-                    mSerachView.setBackground((getResources().getDrawable(title_images_border)));
-                }
-
-            }
-        });
-
+        View root  = LayoutInflater.from(context).inflate(R.layout.custom_title_view, this);
+        root.setFocusable(true);
 
         mWifiImage = root.findViewById(R.id.wifi_badge);
         mWifiImage.setOnFocusChangeListener(new OnFocusChangeListener() {
@@ -120,7 +110,6 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
 
             }
         });
-
         mInputImage = root.findViewById(R.id.input_badge);
         mInputImage.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
@@ -131,7 +120,6 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
 
             }
         });
-
         mSettingImage = root.findViewById(R.id.setting_badge);
         mSettingImage.setOnFocusChangeListener(new OnFocusChangeListener(){
             @Override
@@ -141,26 +129,6 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
                 }
             }
         });
-        mSettingImage.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent dialogIntent = new Intent(android.provider.Settings.ACTION_SETTINGS);
-                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(dialogIntent);
-            }
-        });
-        mWifiImage.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent dialogIntent = new Intent(Settings.ACTION_NETWORK_OPERATOR_SETTINGS);
-                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(dialogIntent);
-            }
-        });
-
-
-
-
         mMenuImage = root.findViewById(R.id.menu_badge);
         mMenuImage.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
@@ -170,22 +138,20 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
                 }
             }
         });
-    }
 
-//    public void onClickMethods() {
-//
-//    }
+        mSearchOrbView = root.findViewById(R.id.search_orb);
+    }
 
     public void setTitle(CharSequence title) {
         if (title != null) {
-            mTitleView.setVisibility(View.VISIBLE);
             mInputImage.setVisibility(View.VISIBLE);
             mMenuImage.setVisibility(View.VISIBLE);
             mWifiImage.setVisibility(View.VISIBLE);
             mSettingImage.setVisibility(View.VISIBLE);
-           mSerachView.setVisibility(View.VISIBLE);
+
         }
     }
+
 
     public void setBadgeDrawable(Drawable drawable) {
         if (drawable != null) {
@@ -200,20 +166,13 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
 
             mSettingImage.setImageDrawable(drawable);
             mSettingImage.setVisibility(View.VISIBLE);
-
-            mTitleView.setVisibility(View.VISIBLE);
-            mTitleView.setImageDrawable(drawable);
-
-           mSerachView.setVisibility(View.VISIBLE);
-           mSerachView.setImageDrawable(drawable);
-
         }
     }
+
     @Override
     public TitleViewAdapter getTitleViewAdapter() {
         return mTitleViewAdapter;
     }
-
 }
 
 

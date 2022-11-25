@@ -1,11 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_browse_fragment"
-    android:name="com.example.BrowseFragmentUsingRetrofit.MainFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:deviceIds="tv"
-    tools:ignore="MergeRootFrame" />
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:background="@color/background_gradient_start">
+
+    <TextView
+        android:id="@+id/movie_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/black_to_transparent_shade_horizontal"
+        android:text="Movie Name"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/yearOfProduction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movie_name"
+        android:layout_marginStart="20dp"
+        android:text="2022"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/watch_time_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movie_name"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/yearOfProduction"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/movie_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movie_name"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/watch_time_txt"
+        android:text="movie time"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/movie_desrciption"
+        android:layout_width="650dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/yearOfProduction"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/Description"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/movie_poster"
+        android:layout_width="506dp"
+        android:layout_height="284dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/black_to_transparent_shade_horizontal"
+        />
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"/>
+
+    <fragment
+        android:id="@+id/main_browse_fragment"
+        android:name="com.example.BrowseFragmentUsingRetrofit.MainFragment"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        tools:context=".MainActivity"
+        tools:deviceIds="tv"
+      />
+</RelativeLayout>

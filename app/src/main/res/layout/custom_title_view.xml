@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_layout_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/_2sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:focusable="false"
-        >
-
-        <ImageView
-            android:id="@+id/search_orb"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_16sdp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_baseline_search_24"
-            android:focusable="true"
-            android:nextFocusRight="@id/wifi_badge"
-            android:nextFocusLeft="@id/menu_badge"
-            />
+    android:layout_height="wrap_content">
+    <androidx.leanback.widget.SearchOrbView
+        android:id="@+id/search_orb"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:transitionGroup="true"
+        android:focusable="true"
+       app:layout_constraintLeft_toLeftOf="parent"
+        android:nextFocusRight="@id/wifi_badge"
+    />
 
     <ImageView
         android:id="@+id/wifi_badge"
@@ -75,16 +64,84 @@
         android:focusable="true"
         />
 
-        <ImageView
-            android:id="@+id/header_title"
-            android:textAppearance="@android:style/TextAppearance.Large"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:src="@drawable/title_android_tv"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginRight="@dimen/_18sdp"
-            android:paddingBottom="@dimen/_10sdp"/>
+    <ImageView
+        android:id="@+id/header_title"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/title_android_tv"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="@dimen/_18sdp"
+        android:paddingBottom="@dimen/_10sdp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_20sdp"
+        app:layout_constraintLeft_toRightOf="@id/menu_badge"
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="false"
+        >
+    <TextView
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true"
+        android:textSize="@dimen/_10sdp"
+        android:text="@string/Home"
+        android:layout_marginLeft="@dimen/_10sdp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/movies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/home"
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true"
+        android:textSize="@dimen/_10sdp"
+        android:text="@string/Movies"
+        android:layout_marginLeft="@dimen/_10sdp"
+        />
+    <TextView
+        android:id="@+id/series"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/movies"
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true"
+        android:textSize="@dimen/_10sdp"
+        android:text="@string/Series"
+        android:layout_marginLeft="@dimen/_10sdp"
+        />
+
+    <TextView
+        android:id="@+id/kids"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/series"
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true"
+        android:textSize="@dimen/_10sdp"
+        android:text="@string/Kids"
+        android:layout_marginLeft="@dimen/_10sdp"
+        />
+
+
+    <TextView
+        android:id="@+id/shorts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/kids"
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true"
+        android:textSize="@dimen/_10sdp"
+        android:text="@string/Shorts"
+        android:layout_marginLeft="@dimen/_10sdp"
+        />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </merge>

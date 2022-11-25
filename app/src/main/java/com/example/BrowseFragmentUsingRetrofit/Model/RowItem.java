@@ -4,14 +4,16 @@ package com.example.BrowseFragmentUsingRetrofit.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class RowItem {
 
     //    @SerializedName("tileType")
 //    @Expose
 //    private String tileType;
-//    @SerializedName("tid")
-//    @Expose
-//    private String tid;
+    @SerializedName("tid")
+    @Expose
+    private String tid;
     @SerializedName("title")
     @Expose
     private String title;
@@ -21,25 +23,25 @@ public class RowItem {
     @SerializedName("portrait")
     @Expose
     private String portrait;
-    //@SerializedName("background")
-    //  @Expose
-//    private String background;
-//    @SerializedName("rating")
+    @SerializedName("background")
+    @Expose
+    private String background;
+    //    @SerializedName("rating")
 //    @Expose
 //    private float rating;
-//    @SerializedName("runtime")
-//    @Expose
-//    private String runtime;
-//    @SerializedName("startTime")
+    @SerializedName("runtime")
+    @Expose
+    private String runtime;
+    //    @SerializedName("startTime")
 //    @Expose
 //    private Integer startTime;
 //    @SerializedName("startIndex")
 //    @Expose
 //    private Integer startIndex;
-//    @SerializedName("target")
-//    @Expose
-//    private List<String> target = null;
-//    @SerializedName("type")
+    @SerializedName("target")
+    @Expose
+    private List<String> target = null;
+    //    @SerializedName("type")
 //    @Expose
 //    private String type;
 //    @SerializedName("useAlternate")
@@ -51,51 +53,57 @@ public class RowItem {
 //    @SerializedName("playstoreUrl")
 //    @Expose
 //    private String playstoreUrl;
-//    @SerializedName("package")
-//    @Expose
-//    private String _package;
-//    @SerializedName("detailPage")
+    @SerializedName("package")
+    @Expose
+    private String _package;
+    //    @SerializedName("detailPage")
 //    @Expose
 //    private Boolean detailPage;
+    @SerializedName("year")
+    @Expose
+    private String year;
+    @SerializedName("synopsis")
+    @Expose
+    private String synopsis;
 
     public  RowItem(){
 
     }
 
-    public RowItem(String title, String poster, String portrait,String tileWidth, String tileHeight, String layoutType) {
+    public RowItem(String tid, String title, String poster, String portrait,String tileWidth, String tileHeight, String layoutType,String year, String synopsis, String background, String runtime) {
 //        this.tileType = tileType;
-//        this.tid = tid;
+        this.tid = tid;
         this.title = title;
         this.poster = poster;
         this.portrait = portrait;
         this.layoutType = layoutType;
-//        this.background = background;
+        this.background = background;
 //        this.rating = rating;
-//        this.runtime = runtime;
+        this.runtime = runtime;
 //        this.startTime = startTime;
 //        this.startIndex = startIndex;
-//        this.target = target;
+        this.target = target;
 //        this.type = type;
 //        this.useAlternate = useAlternate;
 //        this.alternateUrl = alternateUrl;
 //        this.playstoreUrl = playstoreUrl;
-//        this._package = _package;
+        this._package = _package;
 //        this.detailPage = detailPage;
-//        this.source = source;
+        this.source = source;
 //        this.genre = genre;
-//        this.year = year;
+        this.year = year;
 //        this.director = director;
 //        this.cast = cast;
-//        this.synopsis = synopsis;
+        this.synopsis = synopsis;
 //        this.showTileInfo = showTileInfo;
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
     }
 
-//    @SerializedName("source")
-//    @Expose
-//    private String source;
-//    @SerializedName("genre")
+    @SerializedName("source")
+    @Expose
+    private String source;
+    //    @SerializedName("genre")
 //    @Expose
 //    private List<String> genre = null;
 //    @SerializedName("year")
@@ -130,7 +138,7 @@ public class RowItem {
     public void setLayoutType(String layoutType) {
         this.layoutType = layoutType;
     }
-//    public String getTileType() {
+    //    public String getTileType() {
 //        return tileType;
 //    }
 //
@@ -138,13 +146,13 @@ public class RowItem {
 //        this.tileType = tileType;
 //    }
 //
-//    public String getTid() {
-//        return tid;
-//    }
-//
-//    public void setTid(String tid) {
-//        this.tid = tid;
-//    }
+    public String getTid() {
+        return tid;
+    }
+    //
+    public void setTid(String tid) {
+        this.tid = tid;
+    }
 
     public String getTitle() {
         return title;
@@ -173,14 +181,14 @@ public class RowItem {
 
 
 
-//    public String getBackground() {
-//        return background;
-//    }
-//
-//    public void setBackground(String background) {
-//        this.background = background;
-//    }
-//
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
+    //
 //    public float getRating() {
 //        return rating;
 //    }
@@ -189,14 +197,14 @@ public class RowItem {
 //        this.rating = rating;
 //    }
 //
-//    public String getRuntime() {
-//        return runtime;
-//    }
-//
-//    public void setRuntime(String runtime) {
-//        this.runtime = runtime;
-//    }
-//
+    public String getRuntime() {
+        return runtime;
+    }
+    //
+    public void setRuntime(String runtime) {
+        this.runtime = runtime;
+    }
+    //
 //    public Integer getStartTime() {
 //        return startTime;
 //    }
@@ -213,14 +221,14 @@ public class RowItem {
 //        this.startIndex = startIndex;
 //    }
 //
-//    public List<String> getTarget() {
-//        return target;
-//    }
-//
-//    public void setTarget(List<String> target) {
-//        this.target = target;
-//    }
-//
+    public List<String> getTarget() {
+        return target;
+    }
+    //
+    public void setTarget(List<String> target) {
+        this.target = target;
+    }
+    //
 //    public String getType() {
 //        return type;
 //    }
@@ -253,13 +261,13 @@ public class RowItem {
 //        this.playstoreUrl = playstoreUrl;
 //    }
 //
-//    public String getPackage() {
-//        return _package;
-//    }
-//
-//    public void setPackage(String _package) {
-//        this._package = _package;
-//    }
+    public String getPackage() {
+        return _package;
+    }
+    //
+    public void setPackage(String _package) {
+        this._package = _package;
+    }
 //
 //    public Boolean getDetailPage() {
 //        return detailPage;
@@ -269,14 +277,14 @@ public class RowItem {
 //        this.detailPage = detailPage;
 //    }
 
-//    public String getSource() {
-//        return source;
-//    }
-//
-//    public void setSource(String source) {
-//        this.source = source;
-//    }
-//
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+    //
 //    public List<String> getGenre() {
 //        return genre;
 //    }
@@ -285,14 +293,14 @@ public class RowItem {
 //        this.genre = genre;
 //    }
 //
-//    public String getYear() {
-//        return year;
-//    }
-//
-//    public void setYear(String year) {
-//        this.year = year;
-//    }
-//
+    public String getYear() {
+        return year;
+    }
+    //
+    public void setYear(String year) {
+        this.year = year;
+    }
+    //
 //    public List<String> getDirector() {
 //        return director;
 //    }
@@ -309,13 +317,12 @@ public class RowItem {
 //        this.cast = cast;
 //    }
 //
-//    public String getSynopsis() {
-//        return synopsis;
-//    }
-//
-//    public void setSynopsis(String synopsis) {
-//        this.synopsis = synopsis;
-//    }
+    public String getSynopsis() {
+        return synopsis;
+    }
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
 //
 //    public String getShowTileInfo() {
 //        return showTileInfo;
