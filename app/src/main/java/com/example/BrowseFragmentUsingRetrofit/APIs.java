@@ -14,10 +14,9 @@ import retrofit2.http.Url;
 
 public interface APIs {
 
-    String BASE_URL = "http://asset.s4.cloudwalker.tv/";
-
     @GET("cats/assets/cvte.json")
     Call<Cvte> getphotos();
+
 
     @POST
     Call<deeplinkResponse> createPost(@Url String url, @HeaderMap Map<String,String> headerField, @Body Object fields);

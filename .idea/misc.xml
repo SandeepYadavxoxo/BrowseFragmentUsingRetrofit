@@ -13,9 +13,10 @@
         <entry key="app/src/main/res/drawable/list_selector.xml" value="0.119" />
         <entry key="app/src/main/res/drawable/selector.xml" value="0.1435" />
         <entry key="app/src/main/res/drawable/shape.xml" value="0.1055" />
+        <entry key="app/src/main/res/drawable/text_black_to_transparent_shade.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/title_images_border.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/custom_title_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/custom_title_view.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.12" />
         <entry key="app/src/main/res/layout/titleview.xml" value="0.18" />
       </map>

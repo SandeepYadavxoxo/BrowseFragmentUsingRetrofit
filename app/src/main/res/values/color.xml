@@ -32,7 +32,7 @@
     <!--<color name="default_grid">#000000</color>>-->
 
     <!--<color name="default_background">#000000</color>-->
-    <color name="onFocus">#0AF313</color>
+    <color name="onFocus">#AD0AF3</color>
     <color name="NotFocus">#00000000</color>
     <color name="fastlane_background">#03ABF6</color>
     <color name="search_opaque">#000000</color>

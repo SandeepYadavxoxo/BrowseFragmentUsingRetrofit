@@ -1,6 +1,7 @@
 package com.example.BrowseFragmentUsingRetrofit;
 
 import static androidx.core.app.ActivityCompat.startActivityForResult;
+import static com.example.BrowseFragmentUsingRetrofit.R.drawable.movie;
 import static com.example.BrowseFragmentUsingRetrofit.R.drawable.title_images_border;
 
 import android.annotation.SuppressLint;
@@ -33,13 +34,19 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
     private final ImageView mInputImage;
     private final ImageView mSettingImage;
     private final ImageView mMenuImage;
-    private final View mSearchOrbView;
+    private final ImageView mSerachView;
+    private TextView homeText;
+    private TextView MoviesText;
+    private TextView SeriesText;
+    private TextView KidsText;
+    private TextView shortText;
+
+   // private final View mSearchOrbView;
 
     private final TitleViewAdapter mTitleViewAdapter = new TitleViewAdapter() {
         @Override
         public View getSearchAffordanceView() {
-
-            return mSearchOrbView;
+            return null;
         }
 
         @Override
@@ -54,7 +61,7 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
 
         @Override
         public void setOnSearchClickedListener(OnClickListener listener) {
-            mSearchOrbView.setOnClickListener(listener);
+           // mSearchOrbView.setOnClickListener(listener);
         }
 
         @Override
@@ -77,12 +84,14 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
                 mMenuImage.setVisibility(View.VISIBLE);
                 mWifiImage.setVisibility(View.VISIBLE);
                 mSettingImage.setVisibility(View.VISIBLE);
+                mSerachView.setVisibility(View.VISIBLE);
 
             } else {
                 mInputImage.setVisibility(View.GONE);
                 mMenuImage.setVisibility(View.GONE);
                 mWifiImage.setVisibility(View.GONE);
                 mSettingImage.setVisibility(View.GONE);
+                mSerachView.setVisibility(View.GONE);
             }
         }
     };
@@ -99,7 +108,69 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
         super(context, attrs, defStyle);
         View root  = LayoutInflater.from(context).inflate(R.layout.custom_title_view, this);
         root.setFocusable(true);
+        mSerachView = root.findViewById(R.id.search_orb);
+        homeText= root.findViewById(R.id.home);
+        homeText.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus) {
+                    homeText.setBackground((getResources().getDrawable(title_images_border)));
+                }
 
+            }
+        });
+
+        MoviesText= root.findViewById(R.id.movies);
+        MoviesText.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus) {
+                    MoviesText.setBackground((getResources().getDrawable(title_images_border)));
+                }
+
+            }
+        });
+
+        SeriesText= root.findViewById(R.id.series);
+        SeriesText.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus) {
+                    SeriesText.setBackground((getResources().getDrawable(title_images_border)));
+                }
+
+            }
+        });
+
+        KidsText= root.findViewById(R.id.kids);
+        KidsText.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus) {
+                    KidsText.setBackground((getResources().getDrawable(title_images_border)));
+                }
+
+            }
+        });
+        shortText= root.findViewById(R.id.shorts);
+        shortText.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus) {
+                    shortText.setBackground((getResources().getDrawable(title_images_border)));
+                }
+
+            }
+        });
+        mSerachView.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus) {
+                    mSerachView.setBackground((getResources().getDrawable(title_images_border)));
+                }
+
+            }
+        });
         mWifiImage = root.findViewById(R.id.wifi_badge);
         mWifiImage.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
@@ -139,7 +210,7 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
             }
         });
 
-        mSearchOrbView = root.findViewById(R.id.search_orb);
+        //mSearchOrbView = root.findViewById(R.id.search_orb);
     }
 
     public void setTitle(CharSequence title) {
@@ -148,6 +219,7 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
             mMenuImage.setVisibility(View.VISIBLE);
             mWifiImage.setVisibility(View.VISIBLE);
             mSettingImage.setVisibility(View.VISIBLE);
+            mSerachView.setVisibility(View.VISIBLE);
 
         }
     }
@@ -166,6 +238,9 @@ public class CustomTitleView extends ConstraintLayout implements TitleViewAdapte
 
             mSettingImage.setImageDrawable(drawable);
             mSettingImage.setVisibility(View.VISIBLE);
+
+            mSerachView.setVisibility(View.VISIBLE);
+            mSerachView.setImageDrawable(drawable);
         }
     }
 

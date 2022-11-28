@@ -49,6 +49,8 @@ public class CardPresenter extends Presenter {
                         .placeholder(mDefaultCardImage)
                         .error(mDefaultCardImage)
                         .into(mImageView);
+                Log.d("updateViewImage", "updateViewImage: "+Utils.convertPixelToDp(mContext,CARD_WIDTH));
+                Log.d("updateViewImage", "updateViewImage: "+Utils.convertPixelToDp(mContext,CARD_HEIGHT));
             }
             else if (uri.contains("http")) {
                 uri = uri.replace("http", "https");
@@ -58,6 +60,8 @@ public class CardPresenter extends Presenter {
                         .placeholder(mDefaultCardImage)
                         .error(mDefaultCardImage)
                         .into(mImageView);
+                Log.d("updateViewImage", "updateViewImage: "+Utils.convertPixelToDp(mContext,CARD_WIDTH));
+                Log.d("updateViewImage", "updateViewImage: "+Utils.convertPixelToDp(mContext,CARD_HEIGHT));
             } else {
                 Glide.with(mContext)
                         .load(Uri.parse(uri))
@@ -65,6 +69,8 @@ public class CardPresenter extends Presenter {
                         .placeholder(mDefaultCardImage)
                         .error(mDefaultCardImage)
                         .into(mImageView);
+                Log.d("updateViewImage", "updateViewImage: "+Utils.convertPixelToDp(mContext,CARD_WIDTH));
+                Log.d("updateViewImage", "updateViewImage: "+Utils.convertPixelToDp(mContext,CARD_HEIGHT));
             }
         }
     }

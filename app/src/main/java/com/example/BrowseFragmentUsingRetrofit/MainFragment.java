@@ -99,6 +99,12 @@ public class MainFragment extends BrowseSupportFragment {
     private void setupEventListeners() {
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
         setOnItemViewClickedListener(new ItemViewClickedListener());
+        setOnSearchClickedListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
 
@@ -181,7 +187,7 @@ public class MainFragment extends BrowseSupportFragment {
                     Log.d("deeplinkResponse", "onResponse: " + response.code());
 
                     deeplinkResponse deeplinkClass=response.body();
-                    Intent appIntent,marketIntent;
+                    Intent appIntent;
                     //getPackageManager -Return PackageManager instance to find global package information.
                     //Return a "good" intent to launch a front-door Leanback activity in a package,
                     // for use for example to implement an "open" button when browsing through packages.
@@ -190,7 +196,7 @@ public class MainFragment extends BrowseSupportFragment {
                     if (appIntent == null) {
                         // Bring user to the market or let them choose an app
 
-                        marketIntent = new Intent(Intent.ACTION_VIEW);
+                        Intent marketIntent = new Intent(Intent.ACTION_VIEW);
                         marketIntent.setData(Uri.parse(deeplinkClass.getMarketPackageName()));
                         marketIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         marketIntent.setData(Uri.parse(deeplinkClass.getMarketDeeplink()));

@@ -17,6 +17,7 @@ android {
             storePassword '2256081445'
         }
     }
+
     compileSdk 32
 
     defaultConfig {
@@ -63,6 +64,5 @@ dependencies {
     implementation "com.github.bumptech.glide:okhttp3-integration:4.11.0"
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
-    implementation 'androidx.multidex:multidex:2.0.1'
 
 }

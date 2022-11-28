@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.BrowseFragmentUsingRetrofit">
+<!--        android:sharedUserId="android.uid.system"-->
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-feature
@@ -18,7 +19,6 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/newTheme"
-
         tools:targetApi="m">
         <activity
             android:name="com.example.BrowseFragmentUsingRetrofit.MainActivity"
@@ -29,13 +29,14 @@
             android:logo="@drawable/app_icon_your_company"
             android:screenOrientation="landscape">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-                <category android:name="android.intent.category.LAUNCHER" />
                 <data
                     android:scheme="https"/>
                 <data
                     android:scheme="http"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
         <meta-data android:name="com.example.leanback_newlauncher.MyAppGlideModule"

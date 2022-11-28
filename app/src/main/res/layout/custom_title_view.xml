@@ -4,46 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <androidx.leanback.widget.SearchOrbView
+
+    <ImageView
         android:id="@+id/search_orb"
         android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_16sdp"
-        android:transitionGroup="true"
+        android:layout_height="@dimen/_12sdp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_baseline_search_24"
         android:focusable="true"
-       app:layout_constraintLeft_toLeftOf="parent"
         android:nextFocusRight="@id/wifi_badge"
-    />
+        android:nextFocusLeft="@id/shorts"
+        />
 
     <ImageView
         android:id="@+id/wifi_badge"
         android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_16sdp"
+        android:layout_height="@dimen/_12sdp"
         android:src="@drawable/ic_baseline_wifi_24"
         app:layout_constraintLeft_toRightOf="@id/search_orb"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="@dimen/_8sdp"
         android:focusable="true"
+        android:background="@drawable/selector"
         android:nextFocusRight="@id/input_badge"
         android:nextFocusLeft="@id/search_badge"
         />
     <ImageView
         android:id="@+id/input_badge"
         android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_16sdp"
+        android:layout_height="@dimen/_12sdp"
         android:src="@drawable/ic_baseline_input_24"
         app:layout_constraintLeft_toRightOf="@id/wifi_badge"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="@dimen/_16sdp"
         android:focusable="true"
+        android:background="@drawable/selector"
         android:nextFocusRight="@id/setting_badge"
         android:nextFocusLeft="@id/wifi_badge"
         />
     <ImageView
         android:id="@+id/setting_badge"
         android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_16sdp"
+        android:layout_height="@dimen/_12sdp"
         android:src="@drawable/ic_baseline_settings_24"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/selector"
         app:layout_constraintLeft_toRightOf="@id/input_badge"
         android:layout_marginLeft="@dimen/_16sdp"
         android:focusable="true"
@@ -54,46 +60,40 @@
     <ImageView
         android:id="@+id/menu_badge"
         android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_16sdp"
+        android:layout_height="@dimen/_12sdp"
         android:src="@drawable/ic_outline_menu_open_24"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/setting_badge"
         android:layout_marginLeft="@dimen/_16sdp"
+        android:background="@drawable/selector"
         android:nextFocusLeft="@id/setting_badge"
-        android:nextFocusRight="@id/search_badge"
+        android:nextFocusRight="@id/home"
         android:focusable="true"
         />
 
     <ImageView
         android:id="@+id/header_title"
-        android:textAppearance="@android:style/TextAppearance.Large"
         android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_height="@dimen/_12sdp"
         android:src="@drawable/title_android_tv"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="@dimen/_18sdp"
-        android:paddingBottom="@dimen/_10sdp"/>
+        android:layout_marginRight="@dimen/_18sdp"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_layout_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
-        app:layout_constraintLeft_toRightOf="@id/menu_badge"
-        app:layout_constraintTop_toTopOf="parent"
-        android:focusable="false"
-        >
     <TextView
         android:id="@+id/home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/menu_badge"
         app:layout_constraintTop_toTopOf="parent"
         android:focusable="true"
+        android:fontFamily="sans-serif-black"
         android:textSize="@dimen/_10sdp"
         android:text="@string/Home"
+        android:nextFocusRight="@id/movies"
+        android:nextFocusLeft="@id/menu_badge"
         android:layout_marginLeft="@dimen/_10sdp"
-        tools:ignore="MissingConstraints" />
+      />
     <TextView
         android:id="@+id/movies"
         android:layout_width="wrap_content"
@@ -101,8 +101,11 @@
         app:layout_constraintLeft_toRightOf="@id/home"
         app:layout_constraintTop_toTopOf="parent"
         android:focusable="true"
+        android:nextFocusRight="@id/series"
+        android:nextFocusLeft="@id/home"
         android:textSize="@dimen/_10sdp"
         android:text="@string/Movies"
+        android:fontFamily="sans-serif-black"
         android:layout_marginLeft="@dimen/_10sdp"
         />
     <TextView
@@ -112,8 +115,11 @@
         app:layout_constraintLeft_toRightOf="@id/movies"
         app:layout_constraintTop_toTopOf="parent"
         android:focusable="true"
+        android:nextFocusRight="@id/kids"
+        android:nextFocusLeft="@id/movies"
         android:textSize="@dimen/_10sdp"
         android:text="@string/Series"
+        android:fontFamily="sans-serif-black"
         android:layout_marginLeft="@dimen/_10sdp"
         />
 
@@ -124,8 +130,11 @@
         app:layout_constraintLeft_toRightOf="@id/series"
         app:layout_constraintTop_toTopOf="parent"
         android:focusable="true"
+        android:nextFocusRight="@id/shorts"
+        android:nextFocusLeft="@id/series"
         android:textSize="@dimen/_10sdp"
         android:text="@string/Kids"
+        android:fontFamily="sans-serif-black"
         android:layout_marginLeft="@dimen/_10sdp"
         />
 
@@ -137,11 +146,12 @@
         app:layout_constraintLeft_toRightOf="@id/kids"
         app:layout_constraintTop_toTopOf="parent"
         android:focusable="true"
+        android:nextFocusRight="@id/search_orb"
+        android:nextFocusLeft="@id/kids"
+        android:fontFamily="sans-serif-black"
         android:textSize="@dimen/_10sdp"
         android:text="@string/Shorts"
         android:layout_marginLeft="@dimen/_10sdp"
         />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </merge>
